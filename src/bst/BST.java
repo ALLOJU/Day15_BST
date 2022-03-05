@@ -122,5 +122,17 @@ public class BST{
 		postOrder_Recursive(root.right); 
 		System.out.print(root.key+" ");
 	}
+	public void getSize() {
+		System.out.println("Size of the tree is "+getSizeOfBST(root));
+		
+	}
+	private int getSizeOfBST(Node root) {
+		if(root==null)
+			return 0;
+		return 1 + 	getSizeOfBST(root.left) +getSizeOfBST(root.right);
+		
+		
+	}
+	
 
 }

@@ -21,6 +21,7 @@ public class Main {
 		 * 1.Creating object for binary search tree
 		 */
 		BST bst=new BST();
+		
 		/**
 		 BST tree example
               56
@@ -32,6 +33,25 @@ public class Main {
 		bst.insert(56);
 		bst.insert(30);
 		bst.insert(70);
+		bst.insert(3);
+		bst.insert(11);
+		bst.insert(22);
+		bst.insert(16);
+		bst.insert(40);
+		bst.insert(60);
+		bst.insert(65);
+		bst.insert(63);
+		bst.insert(67);
+		bst.insert(95);
+
+
+
+
+
+
+
+
+
 		/**
 		 * 3.printing binary search tree inorder traversal
 		 */
@@ -58,6 +78,11 @@ public class Main {
 		 * 8.postorder traversal of binary search tree
 		 */
 		bst.postorder();
+		/**
+		 * 9.size of the binary search tree 
+		 */
+		System.out.println();
+		bst.getSize();
 	}
 
 }
