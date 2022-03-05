@@ -16,6 +16,7 @@ public class Main {
 		 * 6.preorder traversal of binary search tree
 		 * 7.printing binary search tree preorder traversal
 		 * 8.postorder traversal of binary search tree
+		 * 9.to find size of the binary search tree to check all nodes are present
 		 */
 		/**
 		 * 1.Creating object for binary search tree
@@ -83,6 +84,13 @@ public class Main {
 		 */
 		System.out.println();
 		bst.getSize();
+		/**
+		 * 10. search a key (63) in the BST
+		 * 
+		 */
+		
+        boolean ret_val = bst.search(63);
+        System.out.println("\nKey 63 found in BST:" + ret_val );
 	}
 
 }

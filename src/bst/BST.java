@@ -10,8 +10,12 @@ public class BST{
 	 * preOrder -  method to call pre-order traversal of BST 
 	 * preOrder_Recursive - PreOrder Traversal (rootNode:Left:Right (nLR))
 	 * postorder - method to call post-order traversal of BST 
-	 *postOrder_Recursive -PostOrder Traversal (rootNode:Left:Right (nLR))
-	 *  
+	 * postOrder_Recursive - PostOrder Traversal (rootNode:Left:Right (nLR))
+	 * getSize  - method to call getSizeOfBST()
+	 * search -  Method to find  key in the tree 
+	 * search_Recursive - method to to find key for this we need to check key is present either left side or right side of the root node
+	 * 
+	 * 
 	 * @param root - accepting root node of BST to manipulate it
 	 * @param key - accepting data to put it into the BST
 	 * @return root - it returns root of BST
@@ -115,24 +119,57 @@ public class BST{
 	void postOrder_Recursive(Node root)
 	{
 		if (root == null) 
-            return; 
+			return; 
 		//traverse left subtree recursively
 		postOrder_Recursive(root.left);
 		//next traverse right subtree recursively
 		postOrder_Recursive(root.right); 
 		System.out.print(root.key+" ");
 	}
+	/**
+	 * method to call getSizeOfBST()
+	 */
 	public void getSize() {
 		System.out.println("Size of the tree is "+getSizeOfBST(root));
-		
+
 	}
-	private int getSizeOfBST(Node root) {
+	/**
+	 * this method is used to find size of tree for checking all the nodes present
+	 * @param root - input of taking root node
+	 * @return - integer value i.e size of the tree
+	 */
+	public int getSizeOfBST(Node root) {
 		if(root==null)
 			return 0;
 		return 1 + 	getSizeOfBST(root.left) +getSizeOfBST(root.right);
-		
-		
+
+
+	}
+	/**
+	 * Method to find  key in the tree 
+	 */
+	boolean search(int key)  { 
+		root = search_Recursive(root, key); 
+		if (root!= null)
+			return true;
+		else
+			return false;
 	}
 	
+	/**
+	 * method to to find key for this we need to check key is present either left side or right side of the root node
+	 * @param root -input for root node
+	 * @param key - input data for the node
+	 * @return - returns true or false for the given key
+	 */
+	private Node search_Recursive(Node root, int key) {
+		//root is null or key is present at root 
+		if(root==null || root.key==key)
+			return root;
+		if(key < root.key) 
+			return search_Recursive(root.left,key);
+		return search_Recursive(root.right,key);
+	} 
+
 
 }
