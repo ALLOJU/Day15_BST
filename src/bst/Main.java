@@ -21,8 +21,8 @@ public class Main {
 		/**
 		 * 1.Creating object for binary search tree
 		 */
-		BST bst=new BST();
-		
+		BST<Integer> bst=new BST<>();
+
 		/**
 		 BST tree example
               56
@@ -46,13 +46,6 @@ public class Main {
 		bst.insert(95);
 
 
-
-
-
-
-
-
-
 		/**
 		 * 3.printing binary search tree inorder traversal
 		 */
@@ -61,6 +54,8 @@ public class Main {
 		 * 4.inorder traversal of binary search tree
 		 */
 		bst.inorder();
+		System.out.println();
+
 		System.out.println();
 		/**
 		 * 5.printing binary search tree preorder traversal
@@ -88,9 +83,11 @@ public class Main {
 		 * 10. search a key (63) in the BST
 		 * 
 		 */
-		
-        boolean ret_val = bst.search(63);
-        System.out.println("\nKey 63 found in BST:" + ret_val );
+
+		boolean ret_val = bst.search(63);
+		System.out.println("\nKey 63 found in BST:" + ret_val );
 	}
 
+
 }
+
