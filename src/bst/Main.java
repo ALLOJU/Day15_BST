@@ -16,11 +16,12 @@ public class Main {
 		 * 6.preorder traversal of binary search tree
 		 * 7.printing binary search tree preorder traversal
 		 * 8.postorder traversal of binary search tree
+		 * 9.to find size of the binary search tree to check all nodes are present
 		 */
 		/**
 		 * 1.Creating object for binary search tree
 		 */
-		BST bst=new BST();
+		BST<Integer> bst=new BST<>();
 		
 		/**
 		 BST tree example
@@ -43,15 +44,8 @@ public class Main {
 		bst.insert(63);
 		bst.insert(67);
 		bst.insert(95);
-
-
-
-
-
-
-
-
-
+		
+	
 		/**
 		 * 3.printing binary search tree inorder traversal
 		 */
@@ -60,6 +54,8 @@ public class Main {
 		 * 4.inorder traversal of binary search tree
 		 */
 		bst.inorder();
+		System.out.println();
+
 		System.out.println();
 		/**
 		 * 5.printing binary search tree preorder traversal
@@ -78,11 +74,12 @@ public class Main {
 		 * 8.postorder traversal of binary search tree
 		 */
 		bst.postorder();
-		/**
-		 * 9.size of the binary search tree 
-		 */
-		System.out.println();
-		bst.getSize();
+
+
+
+
+
+
 	}
 
 }
