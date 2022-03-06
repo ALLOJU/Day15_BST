@@ -1,6 +1,6 @@
 package bst;
 
-public class BST{
+public class BST<K extends Comparable<K>>{
 
 	/**
 	 * insert - insert a node in BST and it calls insert_recursive method
@@ -21,7 +21,7 @@ public class BST{
 	 * @return root - it returns root of BST
 	 */
 
-	Node root;
+	Node<K> root;
 	/**
 	 * Constructor for BST =>initial empty tree
 	 */
@@ -34,43 +34,50 @@ public class BST{
 	 *  insert a node in BST and it calls insert_recursive method
 	 * @param key -input data for the node
 	 */
-	public void insert(int key) {
-
-		root=insert_Recursive(root, key); 
+	public void insert(K key) {
+		this.root=this.insert_Recursive(root, key);
+		
 	}
+	
 	/**
 	 * This method is used to call insert method recursively to insert a node into a particular position
 	 * @param root - root node which we need to insert other nodes
 	 * @param key - input data for the node
 	 * @return
 	 */
-	private Node insert_Recursive(Node root, int key) {
+	private Node<K> insert_Recursive(Node<K> root, K key) {
 		//check if root node is null
 		if(root==null) {
-			root=new Node(key);
+			root=new Node<K>(key);
 			return root;
 		}
 		//traverse the tree
-		if(key < root.key) //insert in the left subtree
-			root.left=insert_Recursive(root.left, key);
-
-		else if(key > root.key)//insert in the right subtree
-			root.right=insert_Recursive(root.right,key);
-		// return pointer
+		int compareResult=key.compareTo(root.key);
+		if(compareResult==0)
+			return root;
+		if(compareResult < 0)//insert in the left subtree
+		{
+			root.left=insert_Recursive(root.left,key);
+		}
+		else {
+			root.right=insert_Recursive(root.right, key);
+		}
 		return root;
 	}
 	/**
 	 * method for inorder traversal of BST 
 	 */
-	void inorder() { 
-		inorder_Recursive(root); 
+	public void inorder() {
+		this.root=this.inorder_Recursive(root);
+		
 	}
 	/**
 	 * recursively checking the inorder traversal of tree
 	 * InOrder Traversal - Left:rootNode:Right (LnR) 
 	 * @param root - taking input of root node
+	 * @return 
 	 */
-	public void inorder_Recursive(Node root) {
+	public Node<K> inorder_Recursive(Node<K> root) {
 		//check if root is not null
 		if(root!=null) {
 			//first traverse left subtree recursively
@@ -80,19 +87,20 @@ public class BST{
 			//next traverse right subtree recursively
 			inorder_Recursive(root.right);
 		}
+		return root;
 	}
 	/**
 	 * method for pre-order traversal of BST 
 	 */
 	public void preorder() {
-		preOrder_Recursive(root);  
+		this.preOrder_Recursive(root);  
 
 	}
 	/**
 	 * PreOrder Traversal - rootNode:Left:Right (nLR)
 	 * @param root - input parameter for bst
 	 */
-	void preOrder_Recursive(Node root)  { 
+	void preOrder_Recursive(Node<K> root)  { 
 		if (root == null) 
 			return; 
 
@@ -116,7 +124,7 @@ public class BST{
 
 	 */
 
-	void postOrder_Recursive(Node root)
+	void postOrder_Recursive(Node<K> root)
 	{
 		if (root == null) 
 			return; 
@@ -138,7 +146,7 @@ public class BST{
 	 * @param root - input of taking root node
 	 * @return - integer value i.e size of the tree
 	 */
-	public int getSizeOfBST(Node root) {
+	public int getSizeOfBST(Node<K> root) {
 		if(root==null)
 			return 0;
 		return 1 + 	getSizeOfBST(root.left) +getSizeOfBST(root.right);
@@ -148,8 +156,8 @@ public class BST{
 	/**
 	 * Method to find  key in the tree 
 	 */
-	boolean search(int key)  { 
-		root = search_Recursive(root, key); 
+	boolean search(K key)  { 
+		root = search_Recursive(root,key); 
 		if (root!= null)
 			return true;
 		else
@@ -162,14 +170,14 @@ public class BST{
 	 * @param key - input data for the node
 	 * @return - returns true or false for the given key
 	 */
-	private Node search_Recursive(Node root, int key) {
+	private Node<K> search_Recursive(Node<K> root, K key) {
 		//root is null or key is present at root 
+		int compareResult=key.compareTo(root.key);
 		if(root==null || root.key==key)
 			return root;
-		if(key < root.key) 
+		if(compareResult < 0) 
 			return search_Recursive(root.left,key);
 		return search_Recursive(root.right,key);
 	} 
-
 
 }
